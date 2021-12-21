@@ -1,0 +1,39 @@
+/* Reset styles on body */
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* Work on container, row and cell */
+
+#container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.row {
+  height: 100px;
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+}
+
+.cell {
+  height: 100px;
+  width: 33%;
+}
+
+.row-line {
+  border-bottom: 1px solid black;
+}
+
+.cell-line {
+  border-right: 1px solid black;
+}
+
+/* */
