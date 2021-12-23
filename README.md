@@ -4,4 +4,5 @@ View My Project Live: https://sebastianhoenig.github.io/tictactoeJS/
 
 What I gained from doing this project:
 -Understanding of factory functions, IIFE's and modules
+
 -Using these to structure my code and not have variables in the global namespace
