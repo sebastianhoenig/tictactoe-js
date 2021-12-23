@@ -20,7 +20,9 @@ const gameBoard = (() => {
         logicalBoard[cellId] = player.symbol;
       }
       updateGameBoard();
-      game.checkWinner();
+      if (!game.checkWinner()) {
+        game.checkTie();
+      }
       game.setNextPlayer();
     }
   });
@@ -105,6 +107,15 @@ const gameBoard = (() => {
     }
   };
 
+  const checkDraw = () => {
+    for (cell of logicalBoard) {
+      if (cell === "") {
+        return false;
+      }
+    }
+    return true;
+  };
+
   return {
     updateGameBoard,
     createGameBoard,
@@ -114,6 +125,7 @@ const gameBoard = (() => {
     someoneHasWon,
     getCells,
     setNoNamesEntered,
+    checkDraw,
   };
 })();
 
@@ -128,6 +140,7 @@ const game = (() => {
     [1, 4, 7],
     [2, 5, 8],
   ];
+  let needsReset = false;
   let player1;
   let player2;
   let currentPlayer;
@@ -143,20 +156,26 @@ const game = (() => {
   });
 
   startButton.addEventListener("click", () => {
-    let playerOneForm = document.getElementById("player1");
-    let playerTwoForm = document.getElementById("player2");
-    if (playerOneForm.value === "") {
-      player1 = Player("Player 1", "X");
+    console.log(needsReset);
+    if (needsReset) {
+      return;
     } else {
-      player1 = Player(playerOneForm.value, "X");
+      let playerOneForm = document.getElementById("player1");
+      let playerTwoForm = document.getElementById("player2");
+      if (playerOneForm.value === "") {
+        player1 = Player("Player 1", "X");
+      } else {
+        player1 = Player(playerOneForm.value, "X");
+      }
+      if (playerOneForm.value === "") {
+        player2 = Player("Player 2", "O");
+      } else {
+        player2 = Player(playerTwoForm.value, "O");
+      }
+      currentPlayer = player1;
+      gameBoard.setNoNamesEntered(false);
+      gameText.textContent = "Good luck to both!";
     }
-    if (playerOneForm.value === "") {
-      player2 = Player("Player 2", "O");
-    } else {
-      player2 = Player(playerTwoForm.value, "O");
-    }
-    currentPlayer = player1;
-    gameBoard.setNoNamesEntered(false);
   });
 
   const getCurrentPlayer = () => {
@@ -178,11 +197,21 @@ const game = (() => {
       ) {
         gameBoard.updateWinnerCells(winConditions[i]);
         gameText.textContent = `Congratulations, ${currentPlayer.name} has won!`;
+        needsReset = true;
+        return true;
       }
+    }
+    return false;
+  };
+
+  const checkTie = () => {
+    if (gameBoard.checkDraw()) {
+      gameText.textContent = `It's a draw!`;
+      needsReset = true;
     }
   };
 
   gameBoard.createGameBoard();
 
-  return { getCurrentPlayer, setNextPlayer, checkWinner };
+  return { getCurrentPlayer, setNextPlayer, checkWinner, checkTie };
 })();

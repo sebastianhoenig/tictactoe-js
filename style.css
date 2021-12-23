@@ -5,12 +5,10 @@
 body {
   padding: 0;
   margin: 0;
+  background-color: burlywood;
 }
 
 h1 {
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%, -10%);
   font-size: 3rem;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
@@ -57,6 +55,7 @@ h1 {
 }
 
 #reset {
+  height: 50px;
   margin-top: 30px;
   width: 40%;
   padding: 5px 10px;
@@ -75,6 +74,7 @@ h1 {
 }
 
 #start {
+  height: 50px;
   margin-top: 30px;
   width: 40%;
   padding: 5px 10px;
@@ -100,15 +100,15 @@ h1 {
 }
 
 .row {
-  height: 100px;
-  width: 500px;
+  height: 175px;
+  width: 525px;
   display: flex;
   flex-direction: row;
 }
 
 .cell {
   display: flex;
-  height: 100px;
+  height: 175px;
   width: 33%;
   justify-content: center;
   align-items: center;
@@ -117,15 +117,15 @@ h1 {
 }
 
 .row-line {
-  border-bottom: 1px solid black;
+  border-bottom: 3px solid black;
 }
 
 .cell-line {
-  border-right: 1px solid black;
+  border-right: 3px solid black;
 }
 
 /* */
 
 .winner {
-  background-color: blueviolet;
+  background-color: rgb(20, 129, 111);
 }
