@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
+
 /* Reset styles on body */
 
 body {
@@ -5,15 +7,96 @@ body {
   margin: 0;
 }
 
-/* Work on container, row and cell */
+h1 {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  font-size: 3rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
 
-#container {
+/* module */
+
+.module {
   display: flex;
   flex-direction: column;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  align-items: center;
+}
+
+.inputnames {
+  margin-bottom: 50px;
+}
+
+.gametext {
+  margin-bottom: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: xx-large;
+}
+
+#player1 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: large;
+  width: 150px;
+}
+
+#player2 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: large;
+  width: 150px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 500px;
+}
+
+#reset {
+  margin-top: 30px;
+  width: 40%;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  border-radius: 15px;
+  border-color: #031c25;
+  border-width: 2px;
+  color: rgb(34, 32, 32);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  cursor: pointer;
+  background-color: rgb(162, 212, 24);
+}
+
+#reset:hover {
+  background-color: rgba(162, 212, 24, 0.75);
+}
+
+#start {
+  margin-top: 30px;
+  width: 40%;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  border-radius: 15px;
+  border-color: #031c25;
+  border-width: 2px;
+  color: rgb(34, 32, 32);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  cursor: pointer;
+  background-color: rgb(212, 99, 24);
+}
+
+#start:hover {
+  background-color: rgba(212, 99, 24, 0.75);
+}
+
+/* Work on container, row and cell */
+
+#container {
+  display: flex;
+  flex-direction: column;
 }
 
 .row {
@@ -24,8 +107,13 @@ body {
 }
 
 .cell {
+  display: flex;
   height: 100px;
   width: 33%;
+  justify-content: center;
+  align-items: center;
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: xx-large;
 }
 
 .row-line {
@@ -37,3 +125,7 @@ body {
 }
 
 /* */
+
+.winner {
+  background-color: blueviolet;
+}
